@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıflar Eğitim Uygulaması</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="background-music" loop>
+        <source src="sounds/background-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+    <div class="header">
+        <span class="decor-left"></span>
+        <span class="decor-right"></span>
+        <span class="decor-top"></span>
+        <h1>
+            <span>4</span>
+            <span>.</span>
+            <span> </span>
+            <span>S</span>
+            <span>ı</span>
+            <span>n</span>
+            <span>ı</span>
+            <span>f</span>
+            <span>l</span>
+            <span>a</span>
+            <span>r</span>
+        </h1>
+    </div>
+    
+    <div class="container">
+        <!-- Kullanıcı Adı Girişi -->
+        <div id="isim-giris-panel" class="isim-giris-panel">
+            <h2>Hoş Geldiniz!</h2>
+            <p>Lütfen bir kullanıcı adı seçin:</p>
+            <input type="text" 
+                   id="kullanici-adi" 
+                   maxlength="10" 
+                   placeholder="Kullanıcı adı (max 10 karakter)"
+                   autocomplete="off">
+            <p id="isim-hata" class="hata-mesaji gizli">Geçersiz kullanıcı adı!</p>
+            <button onclick="kullaniciAdiKaydet()">Başla</button>
+        </div>
+
+        <!-- Ders ve Zorluk Seçimi -->
+        <div id="secim-panel" class="secim-panel gizli">
+            <div class="ana-secim-panel">
+                <div class="ders-secimi">
+                    <h3>Ders Seçimi</h3>
+                    <div class="ders-butonlar">
+                        <button onclick="dersSec('matematik')" class="ders-btn matematik">Matematik</button>
+                        <button onclick="dersSec('ingilizce')" class="ders-btn ingilizce">İngilizce</button>
+                        <button onclick="dersSec('hayatBilgisi')" class="ders-btn hayatBilgisi">Hayat Bilgisi</button>
+                        <button onclick="dersSec('fenBilgisi')" class="ders-btn fenBilgisi">Fen Bilgisi</button>
+                    </div>
+                </div>
+
+                <div class="zorluk-secimi">
+                    <h3>Zorluk Seçimi</h3>
+                    <div class="zorluk-butonlar">
+                        <button onclick="zorlukSec('kolay')" class="zorluk-btn kolay">Kolay</button>
+                        <button onclick="zorlukSec('orta')" class="zorluk-btn orta">Orta</button>
+                        <button onclick="zorlukSec('zor')" class="zorluk-btn zor">Zor</button>
+                    </div>
+                </div>
+
+                <button id="basla-btn" class="basla-btn gizli" onclick="testBaslat()">Testi Başlat</button>
+            </div>
+        </div>
+
+        <!-- Quiz Bölümü -->
+        <div id="quiz-panel" class="quiz-panel gizli">
+            <div class="puan-rozet-container">
+                <div>Doğru: <span id="dogru">0</span></div>
+                <div>Yanlış: <span id="yanlis">0</span></div>
+                <div>Puan: <span id="toplam-puan">0</span></div>
+                <div class="rozet">🎯</div>
+            </div>
+
+            <div class="sure-container">
+                Süre: <span id="sure">25</span>
+            </div>
+
+            <div id="soru-container">
+                <div id="soru"></div>
+                <div id="cevaplar">
+                    <button class="cevap-btn" onclick="cevapKontrol('A')">A) Cevap 1</button>
+                    <button class="cevap-btn" onclick="cevapKontrol('B')">B) Cevap 2</button>
+                    <button class="cevap-btn" onclick="cevapKontrol('C')">C) Cevap 3</button>
+                    <button class="cevap-btn" onclick="cevapKontrol('D')">D) Cevap 4</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skor tablosu butonunu ekleyelim -->
+        <button id="skor-tablosu-btn" class="skor-tablosu-btn">
+            🏆 Puan Tablosu
+        </button>
+
+        <!-- Skor tablosu -->
+        <div id="skor-tablosu" class="siralama-panel gizli">
+            <button class="kapat-btn" onclick="skorTablosunuKapat()">✖</button>
+            <h3>En Yüksek Puanlar</h3>
+            <div class="siralama-kategoriler">
+                <button class="siralama-btn" onclick="siralamayiGoster('matematik')">Matematik</button>
+                <button class="siralama-btn" onclick="siralamayiGoster('ingilizce')">İngilizce</button>
+                <button class="siralama-btn" onclick="siralamayiGoster('hayatBilgisi')">Hayat Bilgisi</button>
+                <button class="siralama-btn" onclick="siralamayiGoster('fenBilgisi')">Fen Bilgisi</button>
+            </div>
+            <div class="siralama-liste" id="siralama-liste"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
